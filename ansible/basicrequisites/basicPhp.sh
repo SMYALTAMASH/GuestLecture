@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo a2enmod proxy_fcgi setenvif
-sudo a2enconf php7.0-fpm
+a2enmod proxy_fcgi setenvif
+a2enconf php7.0-fpm

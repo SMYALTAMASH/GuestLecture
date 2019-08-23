@@ -18,13 +18,13 @@
     
     - name: Install other software depencies for php for custom website
       apt:
-        name: php7.0
+        name: php
         state: installed
         update_cache: yes
 
     - name: Copy the index file to the server
       copy:
-        src: website/
+        src: websiteCode/
         dest: /var/www/html/
         owner: root
         group: root
@@ -38,6 +38,7 @@
 
     - name: run the script to enable php
       command: bash -lc "bash -x /tmp/basicPhp.sh"
+      ignore_errors: yes
 
     - name: change the permission to data file
       file:
