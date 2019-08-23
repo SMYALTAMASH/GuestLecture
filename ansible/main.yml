@@ -3,9 +3,6 @@
   become: yes
   gather_facts: no
   pre_tasks:
-    - name: pinging the servers
-      ping: ~
-
     - name: Install basic softwares for running ansible
       raw: "apt update && apt install python-minimal -y"
     
