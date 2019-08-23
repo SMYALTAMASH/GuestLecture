@@ -53,6 +53,6 @@
 
 # Demo on creating and launching a website in AWS from scratch
 
-* Launch an Ubuntu Server in AWS using terraform.
+* Launch an Ubuntu Server in AWS.
 * Create a DNS Record with 'A' record for the IP address obtained from the server.
-* Provision the server with Apache2 as the webserver.
+* Provision the server with Apache2 as the webserver and PHP as the processing language.
