@@ -4,7 +4,7 @@
 ## Awareness of Cloud:
 
 * Why use Cloud?
-* How to manage Scale in CLoud?
+* How to manage application at scale in cloud?
 
 ## How we can optimize cost by moving to cloud:
 
