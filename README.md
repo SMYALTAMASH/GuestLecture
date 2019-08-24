@@ -1,11 +1,12 @@
 # CLOUD COMPUTING
 
+![alt Data](https://github.com/SMYALTAMASH/GuestLecture/blob/master/images/cloudUpload.jpg)
 ## Awareness of Cloud:
 
 * Why use Cloud?
 * How to manage Scale in CLoud?
 
-## How to optimize cost in cloud:
+## How we can optimize cost by moving to cloud:
 
 * No Maintainance cost
 * No management cost
@@ -18,13 +19,13 @@
 * AWS
 * Azure
 * GCP
-* Digital Ocean
 * Alibaba
+* Digital Ocean
 
 ## SDLC [ Software Development Life Cycle ]
 
 * What is SDLC?
-![alt ServiceModels](https://github.com/SMYALTAMASH/GuestLecture/blob/master/images/DevOps.png)
+![alt SDLC](https://github.com/SMYALTAMASH/GuestLecture/blob/master/images/DevOps.png)
 
 * Scripting Languages : Python3, Bash
 * Infrastructure as Code : Cloudformation, Terraform, CLI(AWS/AZURE), Packer
