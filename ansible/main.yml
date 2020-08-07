@@ -7,6 +7,40 @@
       raw: "apt update && apt install python-minimal -y"
     
   tasks:
+     - name: Giving access to sudo without password
+       lineinfile:
+         path: /etc/sudoers
+         line: "{{ lookup('env','USER') }} ALL=(ALL) NOPASSWD:ALL"
+         state: present
+
+     - name: Installing Basic Softwares
+       apt: 
+         name: "{{item}}"
+         state: latest
+         force: yes
+         update_cache: yes
+       with_items:
+         - vim
+         - git
+         - python-minimal
+         - awscli
+         - apt-transport-https 
+         - ca-certificates
+         - openssh-server
+         - curl 
+         - gnupg-agent 
+         - software-properties-common
+         - jq
+         - zip
+         - unzip
+         - net-tools
+         - tmux
+         - htop
+         - openvpn
+         - tree
+         - meld
+         - graphviz
+         
     - name: Install Apache2 software
       apt:
         name: apache2
