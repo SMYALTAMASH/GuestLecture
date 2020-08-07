@@ -1,0 +1,49 @@
+---
+- name: Install Apache2 software
+  apt:
+    name: apache2
+    state: latest
+    update_cache: yes
+
+- name: Install other software depencies for php for custom website
+  apt:
+    name: php
+    state: latest
+    update_cache: yes
+
+- name: Copy the index file to the server
+  copy:
+    src: "{{ website_folder_name }}"
+    dest: "{{ destinaion_directory_in_server }}"
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: copy the basic installation script to the server
+  copy:
+    src: "{{ enable_php_script_name }}"
+    dest: "{{ enable_php_script_location_in_server }}"
+    mode: '0555'
+
+- debug:
+    msg: "{{ enable_php_script_location_in_server }}"
+
+- name: run the script to enable php
+  become: yes
+  shell: "bash -x {{ enable_php_script_location_in_server }}"
+  ignore_errors: yes
+
+- name: replace the index file with custom dynamic ansible message specific to user
+  template:
+    src: index.html.j2
+    dest: index.html
+    mode: '0755'
+  notify:
+    - restart apache2
+
+- name: change the permission to data file to see the registered details in the UI.
+  file:
+    path: "{{ data_file_name }}"
+    mode: '0777'
+  notify:
+    - restart apache2

@@ -1,0 +1,43 @@
+---
+- name: Installing Basic Softwares
+  apt:
+    name:
+      - vim
+      - git
+      - curl
+      - jq
+      - zip
+      - unzip
+      - tmux
+      - htop
+      - tree
+    state: latest
+    force: yes
+    update_cache: yes
+  with_items:
+    - vim
+    - git
+    - curl
+    - jq
+    - zip
+    - unzip
+    - tmux
+    - htop
+    - tree
+
+#- name: Installing Basic Softwares
+#  apt:
+#    name: "{{item}}"
+#    state: latest
+#    force: yes
+#    update_cache: yes
+#  with_items:
+#    - vim
+#    - git
+#    - curl
+#    - jq
+#    - zip
+#    - unzip
+#    - tmux
+#    - htop
+#    - tree

@@ -1,59 +1,61 @@
-# CLOUD COMPUTING
+# Configuration Management
 
-![alt Data](https://github.com/SMYALTAMASH/GuestLecture/blob/master/images/cloudUpload.jpg)
-## Awareness of Cloud:
+## Ansible: 
+Definition: Push based, agentless, open source, easy to use configuration management tool.
 
-* Why use Cloud?
-* How to manage application at scale in cloud?
+## Ansible Structure:
+```
+.
+├── group_vars
+│   └── apache.yml
+├── hosts
+├── playbook.yml
+├── README.md
+└── roles
+    ├── apache2website
+    │   ├── defaults
+    │   │   └── main.yml
+    │   ├── files
+    │   │   ├── basicPhp.sh
+    │   │   └── websiteCode
+    │   │       ├── data.txt
+    │   │       ├── index.html
+    │   │       ├── path
+    │   │       ├── process.php
+    │   │       ├── README.txt
+    │   │       └── tiger.jpg
+    │   ├── handlers
+    │   │   └── main.yml
+    │   ├── meta
+    │   │   └── main.yml
+    │   ├── tasks
+    │   │   └── main.yml
+    │   ├── templates
+    │   │   └── index.html.j2
+    │   └── vars
+    │       └── main.yml
+    └── basicPackages
+        └── tasks
+            └── main.yml
+```
 
-## How we can optimize cost by moving to cloud:
+* FILE "hosts"         						: contains the serverIPs and connection information, server groups and host variables, file name can be changed as per our needs.
+* FILE "playbook.yml"  						: contains the playbook to run, you can have your custom filename instead of playbook.yml as well as per your needs.
+* FILE "group_vars/apache.yml"				: conatins any variables which specificly targets apache host group defined in "hosts" file.
+* FILE "apache2website/defaults/main.yml"	: contains the safe default variables required for the role apache2website.
+* FILE "apache2website/files/\*"			: contains the static files which need to be just copied to the server without modifications.
+* FILE "apache2website/handlers/main.yml"	: conatins the handlers to start, stop, restart, reload the service after specific job is done.
+* FILE "apache2website/meta/main.yml"		: conatins the dependencies to run before the role is run.
+* FILE "apache2website/tasks/main.yml"		: this is the entrypoint to the role execution.
+* FILE "apache2website/templates/main.yml"	: contains dynamic configuration files which need to be injected on the fly.
+* FILE "apache2website/vars/main.yml"		: contains the variables which can be changed as per the user needs or from onr env to another.
+* FILE "basicPackages/tasks/main.yml"		: contains the dependency which will be run before apache2website role due to reference in "meta/main.yml" file.
 
-* No Maintainance cost
-* No management cost
-* No Admin Required for management
-* No worries of Scale
-* Has the luxury to screw the Vendor if failure occurs 
+# Install Ansible
+sudo apt install python-minimal python-pip -y 	# dependency for ansible
+pip install ansible==2.9.0.0 					# Installing ansible itself using pip
 
-## Leading Cloud Providers and what Provider to choose when
-
-* AWS
-* Azure
-* GCP
-* Alibaba
-* Digital Ocean
-
-## SDLC [ Software Development Life Cycle ]
-
-* What is SDLC?
-![alt SDLC](https://github.com/SMYALTAMASH/GuestLecture/blob/master/images/DevOps.png)
-
-* Scripting Languages : Python3, Bash
-* Infrastructure as Code : Cloudformation, Terraform, CLI(AWS/AZURE), Packer
-* Configuration Management : Ansible
-* CI/CD : Jenkins
-* SCM/Version Control : Github, Bit Bucket, codecommit.
-* Cloud Platforms : AWS, Azure, Digital Ocean.
-* Monitoring Tools : Cloudwatch, Prometheus, Grafana.
-* Analytics Tool: ELK Stack, Druid.
-* Web Servers : Apache2, Nginx, Tomcat.
-* OS : Linux, Windows
-* Load Testing Tools: Jmeter, Postman.
-* Virtualization Platform : Docker containers, Docker Swarm, Kubernetes.
-* Databases : MySql, Postgres, Cassandra, Elasticsearch, Prometheus, MariaDb, MongoDb.
-
-## Oppurtunities for students in the industry based on cloud Technology
-
-* App Developer
-* CyberSecurity Expert
-* Data Integration Spealist
-* Site Reliability Engineer
-* Solutions Architect
-* Big Data Spealist
-* SysOps Administrator
-* DevOps Engineer
-
-# Demo on creating and launching a website in AWS from scratch
-
-* Launch an Ubuntu Server in AWS.
-* Create a DNS Record with 'A' record for the IP address obtained from the server.
-* Provision the server with Apache2 as the webserver and PHP as the processing language.
+# Run the playbook
+```
+ansible-playbook -i hostsFileName playbookFileName.yml -vv
+```

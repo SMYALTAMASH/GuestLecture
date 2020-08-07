@@ -1,0 +1,10 @@
+---
+- hosts: apache
+  become: yes
+  gather_facts: no
+  pre_tasks:
+    - name: Install basic dependecy for running ansible
+      raw: "apt update && apt install python-minimal aptitude -y"
+  roles:
+    - basicPackages
+    - apache2website

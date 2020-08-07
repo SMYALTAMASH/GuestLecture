@@ -1,3 +1,0 @@
-[apache]
-#IP ansible_ssh_user=sshUserName ansible_ssh_private_key_file=privateKeyFileLocation
-3.81.107.120 ansible_ssh_user=ubuntu ansible_ssh_private_key_file=~/Downloads/test.pem

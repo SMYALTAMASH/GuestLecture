@@ -1,0 +1,4 @@
+---
+destinaion_directory_in_server: /var/www/html/
+enable_php_script_name: basicPhp.sh
+enable_php_script_location_in_server: /tmp/basicPhp.sh
